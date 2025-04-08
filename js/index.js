@@ -36,3 +36,32 @@ headerNavMenuItems.forEach((item) => {
     if (isLayout) event.currentTarget.classList.toggle('active');
   });
 });
+
+const noveltySwiperEl = document.querySelector('.novelty .swiper');
+const noveltySwiperPrevEl = document.querySelector('.novelty__gallery-controls-prev');
+const noveltySwiperNextEl = document.querySelector('.novelty__gallery-controls-next');
+
+if (noveltySwiperEl && noveltySwiperPrevEl && noveltySwiperNextEl) {
+  const noveltySwiper = new Swiper(noveltySwiperEl, {
+    slidesPerView: 1,
+    spaceBetween: 13,
+    breakpoints: {
+      320: {
+        slidesPerView: 2,
+        spaceBetween: 13,
+      },
+      640: {
+        slidesPerView: 3,
+        spaceBetween: 13,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 26,
+      },
+    },
+    navigation: {
+      nextEl: noveltySwiperNextEl,
+      prevEl: noveltySwiperPrevEl,
+    },
+  });
+}

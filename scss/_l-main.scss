@@ -1,0 +1,11 @@
+.main {
+  padding-top: 137px;
+
+  @include laptop {
+    padding-top: 82px;
+  }
+
+  @include mobile {
+    padding-top: 68px;
+  }
+}

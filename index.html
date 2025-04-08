@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Title</title>
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/index.css" />
+    <script src="./js/swiper-bundle.min.js"></script>
     <script type="module" src="./js/index.js" defer></script>
   </head>
 
@@ -198,6 +200,93 @@
       </div>
     </header>
 
-    <main class="main"></main>
+    <main class="main">
+      <section class="novelty">
+        <div class="novelty__container">
+          <h2 class="novelty__title">НОВИНКИ</h2>
+
+          <div class="novelty__gallery">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="novelty__gallery-slide">
+                    <figure class="novelty__gallery-slide-photo">
+                      <img
+                        class="novelty__gallery-slide-photo-image"
+                        src="./assets/novelty-1.png"
+                        alt="novelty"
+                      />
+                    </figure>
+                    <div class="novelty__gallery-slide-name">Серьги Влюбленность</div>
+                    <div class="novelty__gallery-slide-price">стоимость р</div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="novelty__gallery-slide">
+                    <figure class="novelty__gallery-slide-photo">
+                      <img
+                        class="novelty__gallery-slide-photo-image"
+                        src="./assets/novelty-2.png"
+                        alt="novelty"
+                      />
+                    </figure>
+                    <div class="novelty__gallery-slide-name">Кольцо Шипы</div>
+                    <div class="novelty__gallery-slide-price">стоимость р</div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="novelty__gallery-slide">
+                    <figure class="novelty__gallery-slide-photo">
+                      <img
+                        class="novelty__gallery-slide-photo-image"
+                        src="./assets/novelty-3.png"
+                        alt="novelty"
+                      />
+                    </figure>
+                    <div class="novelty__gallery-slide-name">Браслет Печать буква М</div>
+                    <div class="novelty__gallery-slide-price">стоимость р</div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="novelty__gallery-slide">
+                    <figure class="novelty__gallery-slide-photo">
+                      <img
+                        class="novelty__gallery-slide-photo-image"
+                        src="./assets/novelty-4.png"
+                        alt="novelty"
+                      />
+                    </figure>
+                    <div class="novelty__gallery-slide-name">Кольцо Вечная любовь</div>
+                    <div class="novelty__gallery-slide-price">стоимость р</div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="novelty__gallery-slide">
+                    <figure class="novelty__gallery-slide-photo">
+                      <img
+                        class="novelty__gallery-slide-photo-image"
+                        src="./assets/novelty-1.png"
+                        alt="novelty"
+                      />
+                    </figure>
+                    <div class="novelty__gallery-slide-name">Серьги Влюбленность</div>
+                    <div class="novelty__gallery-slide-price">стоимость р</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div  class="novelty__gallery-controls">
+              <button class="novelty__gallery-controls-prev"></button>
+              <button class="novelty__gallery-controls-next"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
