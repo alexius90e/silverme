@@ -1,0 +1,243 @@
+.header {
+  position: relative;
+  z-index: 100;
+
+  @include laptop {
+    padding: 26px 0 19px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-bottom: 1px solid #505050;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    max-width: 1580px;
+    margin: 0 auto;
+    padding: 0 18px;
+
+    @include laptop {
+      align-items: flex-start;
+    }
+  }
+
+  &__burger {
+    position: relative;
+    z-index: 10;
+    display: none;
+    flex: 0 0 auto;
+
+    @include laptop {
+      display: block;
+      padding: 2px 0 0;
+    }
+
+    @include mobile {
+      padding: 1px 0 0;
+    }
+
+    &-button {
+      display: block;
+      width: 20px;
+      padding: 0;
+      aspect-ratio: 4 / 3;
+      border: none;
+      outline: none;
+      background: url(../assets/burger.svg) center / cover no-repeat;
+      cursor: pointer;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 10;
+    display: block;
+    width: fit-content;
+
+    &-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-image {
+        display: block;
+        max-width: 100%;
+        width: 234px;
+        height: auto;
+
+        @include laptop {
+          width: 180px;
+        }
+
+        @include mobile {
+          width: 114px;
+        }
+      }
+    }
+  }
+
+  &__nav {
+    position: relative;
+    z-index: 10;
+    margin: 0 0 -1px;
+    padding: 0;
+    padding-left: 76px;
+
+    @include desktop {
+      padding-left: 40px;
+    }
+
+    @include laptop {
+      display: none;
+    }
+
+    &-menu {
+      display: flex;
+      align-items: center;
+      gap: 77px;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      @include desktop {
+        gap: 48px;
+      }
+
+      &-item {
+        flex: 0 0 auto;
+        padding: 64px 0 48px;
+        cursor: pointer;
+
+        &-link {
+          font-weight: 300;
+          font-size: 20px;
+          line-height: 125%;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          text-align: center;
+          color: #505050;
+        }
+      }
+    }
+  }
+
+  &__search {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    height: 38px;
+
+    @include laptop {
+      height: auto;
+    }
+
+    &-button {
+      display: block;
+      width: 21px;
+      padding: 0;
+      aspect-ratio: 1 / 1;
+      border: none;
+      outline: none;
+      background: url(../assets/search.svg) center / 19px no-repeat;
+      cursor: pointer;
+
+      @include mobile {
+        width: 16px;
+        background-size: 14px;
+      }
+    }
+  }
+
+  &__searchbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    padding: 134px 0 0;
+    pointer-events: none;
+    background-color: rgba($color: #000000, $alpha: 0);
+    transition-property: background-color;
+    transition-timing-function: ease-out;
+    transition-duration: 0.2s;
+    will-change: background-color;
+
+    @include laptop {
+      padding-top: 80px;
+    }
+
+    @include mobile {
+      padding-top: 67px;
+    }
+
+    &.active {
+      pointer-events: all;
+      background-color: rgba($color: #000000, $alpha: 0.15);
+    }
+
+    &-wrapper {
+      min-height: 288px;
+      padding: 52px 0 24px;
+      box-sizing: border-box;
+      border-bottom: 1px solid rgba($color: #505050, $alpha: 0.4);
+      background-color: #ffffff;
+      transform: translateY(-120%);
+      transition-property: transform;
+      transition-timing-function: ease-out;
+      transition-duration: 0.4s;
+      will-change: transform;
+
+      @include mobile {
+        padding: 16px 0 24px;
+        min-height: 134px;
+      }
+    }
+
+    &.active &-wrapper {
+      transform: translateY(0%);
+    }
+
+    &-container {
+      max-width: 1580px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    &-input {
+      display: block;
+      max-width: 826px;
+      width: 100%;
+      padding: 2px 0;
+      padding-left: 21px;
+      box-sizing: border-box;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 125%;
+      letter-spacing: 0.02em;
+      color: #505050;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid #505050;
+      background: url(../assets/search.svg) left center / 14px no-repeat;
+
+      &::placeholder {
+        color: #c1c1c1;
+      }
+    }
+  }
+}
