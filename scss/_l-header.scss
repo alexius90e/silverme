@@ -88,7 +88,7 @@
   }
 
   &__nav {
-    position: relative;
+    position: static;
     z-index: 10;
     margin: 0 0 -1px;
     padding: 0;
@@ -99,7 +99,101 @@
     }
 
     @include laptop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      padding: 0;
+      background-color: rgba($color: #000000, $alpha: 0);
+      transition-property: background-color;
+      transition-timing-function: ease-out;
+      transition-duration: 0.4s;
+    }
+
+    &.active {
+      @include laptop {
+        background-color: rgba($color: #000000, $alpha: 0.15);
+      }
+    }
+
+    &-wrapper {
+      @include laptop {
+        max-width: 360px;
+        height: 100%;
+        width: 100%;
+        padding: 98px 18px 30px;
+        box-sizing: border-box;
+        background-color: #f1f1f1;
+        transform: translateX(-120dvw);
+        transition-property: transform;
+        transition-timing-function: ease-out;
+        transition-duration: 0.4s;
+      }
+
+      @include mobile {
+        max-width: none;
+      }
+    }
+
+    &.active &-wrapper {
+      @include laptop {
+        transform: translateX(0);
+      }
+    }
+
+    &-content {
+      @include laptop {
+        max-height: calc(100dvh - 98px - 30px);
+        padding-right: 6px;
+        overflow: auto;
+      }
+    }
+
+    &-searchbar {
       display: none;
+
+      @include laptop {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: 33px;
+        padding-bottom: 13px;
+        border-bottom: 1px solid #505050;
+      }
+
+      &-input {
+        display: inline-block;
+        flex: 1 1 auto;
+        width: 100%;
+        padding: 0;
+        padding-left: 24px;
+        box-sizing: border-box;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 100%;
+        letter-spacing: 0.02em;
+        color: #505050;
+        border: none;
+        outline: none;
+        background: url(../assets/search.svg) left center / 14px no-repeat;
+
+        &::placeholder {
+          color: #c1c1c1;
+        }
+      }
+
+      &-reset {
+        display: inline-block;
+        flex: 0 0 auto;
+        width: 18px;
+        padding: 0;
+        aspect-ratio: 1 / 1;
+        border: none;
+        outline: none;
+        background: url(../assets/close.svg) center / 12px no-repeat;
+      }
     }
 
     &-menu {
@@ -114,18 +208,216 @@
         gap: 48px;
       }
 
+      @include laptop {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+      }
+
       &-item {
+        display: inline-block;
         flex: 0 0 auto;
         padding: 64px 0 48px;
-        cursor: pointer;
+
+        @include laptop {
+          position: relative;
+          gap: 24px;
+          width: 100%;
+          padding: 0;
+        }
+
+        &.active::after {
+          transform: rotate(90deg);
+        }
+
+        &:has(.header__nav-submenu) {
+          &::after {
+            @include laptop {
+              content: '';
+              position: absolute;
+              top: 2px;
+              right: 0;
+              display: block;
+              flex: 0 0 auto;
+              width: 14px;
+              aspect-ratio: 1 / 1;
+              background: url(../assets/shevron-next.svg) center / cover no-repeat;
+              transition: transform ease-in-out 0.2s;
+            }
+          }
+        }
 
         &-link {
+          display: inline-block;
           font-weight: 300;
           font-size: 20px;
           line-height: 125%;
           letter-spacing: 0.06em;
           text-transform: uppercase;
           text-align: center;
+          color: #505050;
+
+          @include laptop {
+            padding-right: 20px;
+            font-size: 15px;
+            text-align: left;
+          }
+
+          &:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+          }
+        }
+      }
+    }
+
+    &-submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: none;
+      padding: 26px 0 38px;
+      background-color: #f1f1f1;
+
+      @include laptop {
+        position: static;
+        display: block;
+        max-height: 0;
+        padding: 0;
+        overflow: hidden;
+        transition: max-height ease-in-out 0.4s;
+      }
+
+      &-wrapper {
+        display: flex;
+        gap: 80px;
+        max-width: 1580px;
+        margin: 0 auto;
+        padding: 0 18px;
+
+        @include laptop {
+          display: block;
+          padding: 8px 0 0;
+        }
+      }
+
+      &-content {
+        flex: 0 0 auto;
+      }
+
+      &-title {
+        margin: 0 0 15px;
+
+        @include laptop {
+          display: none;
+        }
+
+        &-link {
+          font-weight: 300;
+          font-size: 20px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: #505050;
+
+          &:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+          }
+        }
+      }
+
+      &-list {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+
+        @include laptop {
+          gap: 4px;
+        }
+
+        &-item {
+          &-link {
+            font-weight: 300;
+            font-size: 15px;
+            line-height: 125%;
+            letter-spacing: 0.02em;
+            text-align: center;
+            color: #505050;
+
+            @include laptop {
+              font-size: 13px;
+            }
+
+            &:hover {
+              text-decoration: underline;
+              text-underline-offset: 3px;
+            }
+          }
+        }
+      }
+
+      &-gallery {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 21px;
+
+        @include laptop {
+          margin-top: 8px;
+          gap: 8px;
+        }
+
+        &-item {
+          flex: 0 0 auto;
+
+          @include laptop {
+            flex: 0 0 calc(50% - 8px / 2);
+          }
+
+          &-image {
+            display: block;
+            width: 209px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    &-menu-item:hover &-submenu {
+      display: block;
+    }
+
+    &-menu-item.active &-submenu {
+      @include laptop {
+        max-height: 800px;
+      }
+    }
+
+    &-info {
+      display: none;
+
+      @include laptop {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 44px 0 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      &-item {
+        flex: 1 1 100%;
+
+        &-link {
+          font-weight: 300;
+          font-size: 13px;
+          letter-spacing: 0.02em;
           color: #505050;
         }
       }
